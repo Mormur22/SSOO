@@ -1,0 +1,11 @@
+    En la función read_student_line, se asigna la memoria de student.first_name y student.last_name con una longitud máxima de MAX_CHARS_NAME, sin embargo, no se agrega el carácter nulo en la última posición de estas cadenas, lo que podría causar problemas al imprimir o manipular estas cadenas. Esto se puede solucionar agregando el carácter nulo al final de ambas cadenas después de copiarlas.
+
+    En la misma función read_student_line, hay un error al liberar la memoria asignada a student. En lugar de liberar el puntero a la estructura, se debe liberar cada uno de los punteros a las cadenas que se asignaron dinámicamente.
+
+    En la función parse_records, se define students como un puntero a una estructura student_t, pero se asigna memoria para un array de estructuras student_t. Esto podría causar problemas más adelante si se intenta acceder a students como si fuera un array. Para solucionar esto, se debe cambiar la definición de students para que sea un puntero a un array de estructuras student_t.
+
+    En la función dump_entries, si ocurre un error durante la escritura de un registro, la función devuelve -1 sin liberar la memoria asignada a entries. Esto podría causar fugas de memoria en el programa. Se debe agregar una instrucción free(entries); antes de devolver -1.
+
+    En la función read_student_file, si ocurre un error al leer un registro, la función libera la memoria asignada a entries y devuelve NULL, pero no asigna NULL a nr_entries. Esto podría causar problemas más adelante si se intenta acceder a nr_entries como si tuviera un valor válido. Se debe agregar la instrucción *nr_entries = 0; antes de devolver NULL.
+
+    En la función print_usage, hay un error tipográfico en la cadena de formato de la primera llamada a printf. Se debe cambiar %s -f file a %s [-f file]. Además, la descripción de la opción -q es incorrecta, ya que no se menciona que esta opción puede ser utilizada en conjunto con -i o -n ID. Se debe agregar esta información a la descripción de la opción -q.

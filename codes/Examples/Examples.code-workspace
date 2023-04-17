@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../ficheros_p1"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "ficheros_p1"
+	}
+}
